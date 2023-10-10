@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Login Page</title>
+</head>
+<body>
+    <h1>Login Page</h1>
+    <form action="/login" method="post">
+        <label for="password">Password:</label>
+        <input type="password" id="password" name="password" required>
+        <br>
+        <button type="submit" onclick="encryptPassword()">Submit</button>
+=
+    </form>
+
+    <script>
+        function encryptPassword() {
+            var passwordInput = document.getElementById("password");
+            var encryptedPassword = sha256(passwordInput.value);
+            passwordInput.value = encryptedPassword;
+        }
+
+        function sha256(plainText) {
+            // Perform the encryption using a hashing algorithm (e.g., SHA256)
+            // You can use a library like CryptoJS or implement your own hashing function
+            // Here's an example using CryptoJS:
+            var encrypted = CryptoJS.SHA256(plainText);
+            return encrypted.toString();
+        }
+    </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/4.0.0/crypto-js.min.js"></script>
+</body>
+</html>
