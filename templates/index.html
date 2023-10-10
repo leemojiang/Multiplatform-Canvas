@@ -5,19 +5,23 @@
 </head>
 <body>
     <h1>Login Page</h1>
-    <form action="/login" method="post">
-        <label for="password">Password:</label>
+    <form id="inputForm">
+        <label for="password">Enter Your ROOM ID:</label>
         <input type="password" id="password" name="password" required>
         <br>
         <button type="submit" onclick="encryptPassword()">Submit</button>
-=
     </form>
 
     <script>
         function encryptPassword() {
             var passwordInput = document.getElementById("password");
             var encryptedPassword = sha256(passwordInput.value);
-            passwordInput.value = encryptedPassword;
+            // passwordInput.value = encryptedPassword;
+            
+            // Redirect to the page with the encrypted password as the ID
+            window.location.href = "/item/" + encodeURIComponent(encryptedPassword);
+
+            
         }
 
         function sha256(plainText) {
