@@ -151,9 +151,16 @@ async def websocket_endpoint(websocket: WebSocket):
     clientWebsockets[clientID][websocket] = datetime.now()
     # This will keep websocket alive
     while True:
-        data = await websocket.receive_text()
-        await websocket.send_text(f"ping")
-        # logger.info(clientWebsockets)
+        try:
+            data = await websocket.receive_text()
+            await websocket.send_text(f"ping")
+            logger.info(clientWebsockets)
+        except:
+            logger.info("Client socket down")
+            clientWebsockets[clientID].pop(websocket)
+            return
+            
+        
         
 # Start the task to check for inactive websockets
 asyncio.create_task(purge_websockets(clientWebsockets))
