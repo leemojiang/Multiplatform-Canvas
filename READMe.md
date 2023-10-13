@@ -22,5 +22,5 @@
 ```
 
 ## REF
-画图板部分来自一下工作
+画图板部分来自以下工作
 https://github.com/chenyulian/canvas-painter
