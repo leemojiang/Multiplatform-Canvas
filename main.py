@@ -52,7 +52,7 @@ async def get_assets_file(file_id):
 
 import base64
 import io
-from PIL import Image
+# from PIL import Image
 # Dictionary to store websockets
 clientWebsockets = {}
 # Timeout duration for inactive clients (in seconds)
